@@ -28,7 +28,7 @@ jobs:
             submodules: 'true'
       
       - name: Checking the workspace after updating submodules
-        run: ls -laRt
+        run: ls -laRt; cd submodule1; git log -1
 
       - name: Run a multi-line script
         run: |
