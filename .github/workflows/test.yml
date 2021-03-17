@@ -52,4 +52,8 @@ jobs:
              cd $GITHUB_WORKSPACE
              ./test.sh
              echo "test execution completed on backend2"
+             
+      - name: Clean temp directory
+        run: rm -rf *
+        working-directory: $GITHUB_WORKSPACE
 
