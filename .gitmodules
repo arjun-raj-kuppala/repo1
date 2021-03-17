@@ -1,0 +1,4 @@
+[submodule "submodule1"]
+	path = submodule1
+	url = https://github.com/arjun-raj-kuppala/repo2.git
+	branch = develop
