@@ -24,13 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Setting up workspace
-        run: echo $GITHUB_WORKSPACE;ls -laRt; cd $GITHUB_WORKSPACE; git submodule foreach --recursive git pull origin develop
-      
-      - name: Updating submodules
-        run: git submodule foreach --recursive git pull origin develop
+        with: 
+            submodules: 'true'
       
       - name: Checking the workspace after updating submodules
         run: ls -laRt
