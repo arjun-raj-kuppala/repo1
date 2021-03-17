@@ -27,10 +27,22 @@ jobs:
         with: 
             submodules: 'true'
       
-      - name: Checking the workspace after updating submodules
-        run: ls -laRt; cd submodule1; git log -1
-
-      - name: Run a multi-line script
+      - name: Check latest commit on submodule project
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+             cd $GITHUB_WORKSPACE/submodule1 
+             git log -1
+      
+      - name: Running build
+        run: |
+            cd $GITHUB_WORKSPACE
+            echo "starting the build"
+            ./build.sh
+            echo "build completed successfully"
+      
+      - name: Running tests
+        run: |
+             echo "starting test execution"
+             cd $GITHUB_WORKSPACE
+             ./tesh.sh
+             echo "test execution completed"
+      
