@@ -32,17 +32,24 @@ jobs:
              cd $GITHUB_WORKSPACE/submodule1 
              git log -1
       
-      - name: Running build
+      - name: Running test-common build
         run: |
             cd $GITHUB_WORKSPACE
             echo "starting the build"
             ./build.sh
             echo "build completed successfully"
       
-      - name: Running tests
+      - name: Running tests on backend1
         run: |
-             echo "starting test execution"
+             echo "starting test execution on backend1"
              cd $GITHUB_WORKSPACE
              ./test.sh
              echo "test execution completed"
-      
+             
+      - name: Running tests on backend2
+        run: |
+             echo "starting test execution on backend2"
+             cd $GITHUB_WORKSPACE
+             ./test.sh
+             echo "test execution completed on backend2"
+
