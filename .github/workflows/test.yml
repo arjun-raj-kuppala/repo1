@@ -43,6 +43,6 @@ jobs:
         run: |
              echo "starting test execution"
              cd $GITHUB_WORKSPACE
-             ./tesh.sh
+             ./test.sh
              echo "test execution completed"
       
