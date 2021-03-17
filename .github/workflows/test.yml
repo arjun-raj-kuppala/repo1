@@ -33,7 +33,9 @@ jobs:
       
       - name: Check latest commit on submodule project
         run: |
-             cd $GITHUB_WORKSPACE/submodule1 
+             cd $GITHUB_WORKSPACE/backend1 
+             git log -1
+             cd $GITHUB_WORKSPACE/backend2
              git log -1
       
       - name: Running test-common build
