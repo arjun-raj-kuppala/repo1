@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Setting up workspace
-        run: cd $GITHUB_WORKSPACE; git submodule foreach --recursive git pull origin develop
+        run: echo $GITHUB_WORKSPACE;ls -laRt; cd $GITHUB_WORKSPACE; git submodule foreach --recursive git pull origin develop
       
       - name: Updating submodules
         run: git submodule foreach --recursive git pull origin develop
