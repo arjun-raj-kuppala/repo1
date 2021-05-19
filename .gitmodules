@@ -2,3 +2,11 @@
 	path = submodule1
 	url = https://github.com/arjun-raj-kuppala/repo2.git
 	branch = develop
+[submodule "backend2"]
+	path = backend2
+	url = https://github.com/arjun-raj-kuppala/test-backend2.git
+	branch = develop
+[submodule "backend1"]
+	path = backend1
+	url = https://github.com/arjun-raj-kuppala/test-backend1.git
+	branch = develop

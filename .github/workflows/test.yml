@@ -7,8 +7,12 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ develop ]
+    paths-ignore:
+    - '.github/**'
   pull_request:
     branches: [ develop ]
+    paths-ignore:
+    - '.github/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -18,19 +22,44 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: test-anl
+    runs-on: self-hosted
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+        with: 
+            submodules: 'true'
+      
+      - name: Check latest commit on submodule project
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+             cd $GITHUB_WORKSPACE/submodule1 
+             git log -1
+      
+      - name: Running test-common build
+        run: |
+            cd $GITHUB_WORKSPACE
+            echo "starting the build"
+            ./build.sh
+            echo "build completed successfully"
+      
+      - name: Running tests on backend1
+        run: |
+             echo "starting test execution on backend1"
+             cd $GITHUB_WORKSPACE
+             ./test.sh
+             echo "test execution completed"
+             
+      - name: Running tests on backend2
+        run: |
+             echo "starting test execution on backend2"
+             cd $GITHUB_WORKSPACE
+             ./test.sh
+             echo "test execution completed on backend2"
+             
+      - name: Clean temp directory
+        run: |
+             cd $GITHUB_WORKSPACE
+             rm -rf *
+             echo "cleaned up the workspace"
+
